@@ -60,6 +60,8 @@ const MainHeader = styled.div`
     height: 72px;
     border-bottom: 1px solid ${COLORS.gray[300]};
 
+    overflow-x: auto;
+
     @media ${(p) => p.theme.queries.tabletAndSmaller} {
         border-top: 4px solid ${COLORS.gray[900]};
 
@@ -75,7 +77,7 @@ const MainHeader = styled.div`
 
 const DesktopNav = styled.nav`
     display: flex;
-    gap: 48px;
+    gap: 2vw; /* eh */
     margin: 0px 48px;
 
     @media ${(p) => p.theme.queries.tabletAndSmaller} {
@@ -105,6 +107,8 @@ const NavLink = styled.a`
     text-decoration: none;
     color: ${COLORS.gray[900]};
     font-weight: ${WEIGHTS.medium};
+
+    white-space: nowrap;
 
     &:first-of-type {
         color: ${COLORS.secondary};
