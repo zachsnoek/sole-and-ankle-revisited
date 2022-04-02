@@ -33,7 +33,7 @@ const Wrapper = styled.div`
     padding-left: 32px;
     padding-right: 32px;
 
-    @media ${(p) => p.theme.queries.laptopAndSmaller} {
+    @media ${(p) => p.theme.queries.tabletAndSmaller} {
         display: none;
     }
 `;

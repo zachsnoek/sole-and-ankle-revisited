@@ -20,19 +20,18 @@ const Header = () => {
         <header>
             <SuperHeader />
             <MainHeader>
-                <Side>
+                <LogoWrapper>
                     <Logo />
-                </Side>
-                <Nav>
+                </LogoWrapper>
+                <DesktopNav>
                     <NavLink href="/sale">Sale</NavLink>
                     <NavLink href="/new">New&nbsp;Releases</NavLink>
                     <NavLink href="/men">Men</NavLink>
                     <NavLink href="/women">Women</NavLink>
                     <NavLink href="/kids">Kids</NavLink>
                     <NavLink href="/collections">Collections</NavLink>
-                </Nav>
-                <Side />
-                <MobileNav>
+                </DesktopNav>
+                <MobileActions>
                     <UnstyledButton>
                         <Icon id="shopping-bag" />
                     </UnstyledButton>
@@ -42,7 +41,8 @@ const Header = () => {
                     <UnstyledButton onClick={() => setShowMobileMenu(true)}>
                         <Icon id="menu" />
                     </UnstyledButton>
-                </MobileNav>
+                </MobileActions>
+                <Filler />
             </MainHeader>
 
             <MobileMenu
@@ -60,23 +60,43 @@ const MainHeader = styled.div`
     height: 72px;
     border-bottom: 1px solid ${COLORS.gray[300]};
 
-    @media ${(p) => p.theme.queries.laptopAndSmaller} {
+    @media ${(p) => p.theme.queries.tabletAndSmaller} {
         border-top: 4px solid ${COLORS.gray[900]};
+
+        justify-content: space-between; // add space between logo wrapper and mobile actions
+        align-items: center;
+    }
+
+    @media ${(p) => p.theme.queries.phoneAndSmaller} {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 `;
 
-const Nav = styled.nav`
+const DesktopNav = styled.nav`
     display: flex;
     gap: 48px;
     margin: 0px 48px;
 
-    @media ${(p) => p.theme.queries.laptopAndSmaller} {
+    @media ${(p) => p.theme.queries.tabletAndSmaller} {
         display: none;
     }
 `;
 
-const Side = styled.div`
+const LogoWrapper = styled.div`
     flex: 1;
+
+    @media ${(p) => p.theme.queries.tabletAndSmaller} {
+        flex: revert;
+    }
+`;
+
+const Filler = styled.div`
+    flex: 1;
+
+    @media ${(p) => p.theme.queries.tabletAndSmaller} {
+        display: none;
+    }
 `;
 
 const NavLink = styled.a`
@@ -91,12 +111,16 @@ const NavLink = styled.a`
     }
 `;
 
-const MobileNav = styled.div`
+const MobileActions = styled.div`
     display: none;
 
-    @media ${(p) => p.theme.queries.laptopAndSmaller} {
+    @media ${(p) => p.theme.queries.tabletAndSmaller} {
         display: flex;
-        gap: 2.5vw;
+        gap: 32px;
+    }
+
+    @media ${(p) => p.theme.queries.phoneAndSmaller} {
+        gap: 16px;
     }
 `;
 
